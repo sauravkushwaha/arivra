@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body{
+    font-family: 'poppins', sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* In your global CSS */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
