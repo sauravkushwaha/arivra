@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Helmet } from "react-helmet-async";
+import { fetchTutorials } from "../utils/api"; 
 
 const AllTutorials = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -10,18 +10,17 @@ const AllTutorials = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    const fetchTutorials = async () => {
+    const getTutorials = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/tutorial/all");
-        setTutorials(res.data);
-        setLoading(false);
+        const data = await fetchTutorials(); 
+        setTutorials(data);
       } catch (err) {
         console.error("Error fetching tutorials", err);
+      } finally {
         setLoading(false);
       }
     };
-
-    fetchTutorials();
+    getTutorials();
   }, []);
 
   const toggleAccordion = (index) => {
@@ -37,7 +36,9 @@ const AllTutorials = () => {
           content="Explore coding tutorials with Q&A and code snippets on Arivra."
         />
       </Helmet>
+
       <Navbar />
+
       <div className="max-w-4xl mx-auto mt-10 mb-10 p-5 rounded shadow dark:bg-gray-800 dark:text-gray-100 bg-slate-50 text-gray-800">
         <h2 className="text-3xl font-bold mb-6 text-center">Tutorials</h2>
 
@@ -68,10 +69,12 @@ const AllTutorials = () => {
                   }`}
                 >
                   <div className="accordion-body px-2 py-3">
-                    <p className="mb-2 text-blue-900 dark:text-blue-400 whitespace-pre-line"> {tutorial.answer}</p>
+                    <p className="mb-2 text-blue-900 dark:text-blue-400 whitespace-pre-line">
+                      {tutorial.answer}
+                    </p>
 
                     {tutorial.code && (
-                      <div className="relative bg-gray-200  p-3 rounded font-mono text-sm mx-h-96 overflow-auto max-w-full">
+                      <div className="relative bg-gray-200 p-3 rounded font-mono text-sm max-h-96 overflow-auto">
                         <button
                           onClick={() =>
                             navigator.clipboard.writeText(tutorial.code)
@@ -80,7 +83,7 @@ const AllTutorials = () => {
                         >
                           CopyCode
                         </button>
-                        <pre className="whitespace-pre-wrap text-sm min-w-full  text-gray-900">
+                        <pre className="whitespace-pre-wrap text-sm text-gray-900">
                           {tutorial.code}
                         </pre>
                       </div>
@@ -92,6 +95,7 @@ const AllTutorials = () => {
           </div>
         )}
       </div>
+
       <Footer />
     </>
   );
