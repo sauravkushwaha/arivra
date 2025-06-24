@@ -6,6 +6,7 @@ import {toast, ToastContainer} from "react-toastify";
 import { handleError } from '../utils';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { signupUser } from '../utils/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +35,8 @@ const Signup = () => {
       return handleError("name, email, password all fields are required")
     }
     try {
-      const res = await axios.post('http://localhost:8080/auth/signup', formData);
+      const res = await signupUser(formData);
+      // const res = await axios.post('http://localhost:8080/auth/signup', formData);
       toast.success("Signup successful!")
       setTimeout(() => navigate("/login"), 1500);
       // alert('Signup successful!');

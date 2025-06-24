@@ -1,4 +1,3 @@
-// src/pages/Signup.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -6,6 +5,7 @@ import {toast, ToastContainer} from "react-toastify";
 import { handleError } from '../utils';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { loginUser } from '../utils/api';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const Login = () => {
       return handleError("email, password all fields are required")
     }
     try {
-      const res = await axios.post('http://localhost:8080/auth/login', formData);
+      const res = await loginUser(formData);
       toast.success("Login successful!")
       localStorage.setItem('token', res.data.token);
   //     localStorage.setItem('loggedInUser', JSON.stringify({

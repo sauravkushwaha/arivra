@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Sun, Moon, ExternalLink } from "lucide-react";
-import { courses } from "./courses/courseData.js"
+import { courses } from "./courses/courseData.js";
+
+import {toast, ToastContainer} from "react-toastify";
 
 const Navbar = () => {
   const [username, setUsername] = useState(null);
@@ -20,7 +22,8 @@ const Navbar = () => {
     //logout user
     localStorage.removeItem("loggedInUser");
     setUsername(null);
-    setTimeout(() => navigate("/"), 1500);
+    toast.success('logged out successfully');
+    setTimeout(() => navigate("/"), 1000);
   };
 
 const handleSearch = (e) => {
@@ -180,10 +183,7 @@ const handleSearch = (e) => {
                     Profile
                   </NavLink>
                   <button
-                    onClick={() => {
-                      localStorage.removeItem("loggedInUser");
-                      window.location.href = "/";
-                    }}
+                    onClick={handleLogout}
                     className="w-full text-left px-5 py-2 text-sm text-red-600 hover:bg-red-100"
                   >
                     Logout
@@ -296,6 +296,7 @@ const handleSearch = (e) => {
           </div>
         )}
       </nav>
+      <ToastContainer/>
       {/* </div> */}
     </>
   );

@@ -3,6 +3,7 @@ import axios from "axios";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Helmet } from "react-helmet-async";
+import { postTutorial } from "../utils/api";
 
 const AddTutorial = () => {
   const [question, setQuestion] = useState("");
@@ -20,27 +21,15 @@ const AddTutorial = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/tutorial/add",
-        {
-          question,
-          answer,
-          code, // ✅ include code in payload
-        },
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+       await postTutorial({ question, answer, code }, token);
+
 
       setMessage("✅ Tutorial added successfully!");
       setQuestion("");
       setAnswer("");
-      setCode(""); // ✅ clear code input
+      setCode(""); 
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       setMessage("❌ Failed to add tutorial. Only admin can add.");
     }
   };
