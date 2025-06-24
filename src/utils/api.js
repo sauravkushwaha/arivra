@@ -6,7 +6,7 @@ export const api = axios.create({
   baseURL: BASE_URL,
 });
 
-// ✅ Get all tutorials
+//  Get all tutorials
 export const fetchTutorials = async () => {
   try {
     const response = await api.get("/api/tutorial/all");
@@ -17,7 +17,7 @@ export const fetchTutorials = async () => {
   }
 };
 
-// ✅ Signup user
+//  Signup user
 export const signupUser = async (formData) => {
   try {
     const response = await api.post("/auth/signup", formData);
@@ -28,7 +28,7 @@ export const signupUser = async (formData) => {
   }
 };
 
-// ✅ Login user (FIXED to prevent double toast)
+//  Login user 
 export const loginUser = async (formData) => {
   try {
     const response = await api.post("/auth/login", formData);
@@ -43,7 +43,7 @@ export const loginUser = async (formData) => {
   }
 };
 
-// ✅ Add tutorial with token
+// Add tutorial
 export const postTutorial = async (tutorialData, token) => {
   try {
     const response = await api.post("/api/tutorial/add", tutorialData, {
