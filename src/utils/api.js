@@ -6,6 +6,7 @@ export const api = axios.create({
   baseURL: BASE_URL,
 });
 
+// ✅ Get all tutorials
 export const fetchTutorials = async () => {
   try {
     const response = await api.get("/api/tutorial/all");
@@ -16,6 +17,7 @@ export const fetchTutorials = async () => {
   }
 };
 
+// ✅ Signup user
 export const signupUser = async (formData) => {
   try {
     const response = await api.post("/auth/signup", formData);
@@ -26,21 +28,27 @@ export const signupUser = async (formData) => {
   }
 };
 
+// ✅ Login user (FIXED to prevent double toast)
 export const loginUser = async (formData) => {
   try {
     const response = await api.post("/auth/login", formData);
-    return response.data;
+    if (response.status === 200 && response.data?.token) {
+      return response; // correct login
+    } else {
+      throw new Error("Invalid login response");
+    }
   } catch (error) {
     console.error("Login error:", error);
     throw error;
   }
 };
 
+// ✅ Add tutorial with token
 export const postTutorial = async (tutorialData, token) => {
   try {
     const response = await api.post("/api/tutorial/add", tutorialData, {
       headers: {
-        Authorization:` Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
