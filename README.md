@@ -1,12 +1,89 @@
-# React + Vite
+# Arivra – Learn, Build, Evolve 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Arivra* is a full-stack MERN application designed as a developer learning platform. It empowers users to explore tutorials, dive into web development concepts, and evolve their skills with a clean, responsive, and interactive interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Features
 
-## Expanding the ESLint configuration
+- 💻 *MERN Stack*: MongoDB, Express, React, Node.js
+- ✍ *Admin Tutorial Posting* (secured with JWT auth)
+- 🔍 *Search Functionality* (Global search for tutorials & courses)
+- 🌙 *Dark/Light Mode Toggle*
+- 📱 *Fully Responsive Design* (Mobile-first)
+- 📚 *Course Section* with dynamic routing (/courses/:coursename)
+- 📎 *Tutorial Accordion UI* (Collapsible Q&A)
+- 📋 *Copy Code Button* for quick code copying
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Folder Structure
+```
+Arivra/
+├── backend/         # Express + MongoDB backend (APIs, Auth, Models, Controllers)
+│   ├── Controllers/
+│   ├── Middleware/
+│   ├── Models/
+│   ├── Routes/
+│   └── server.js`enter code here`
+│
+├── public/          # Static assets (React)
+│
+├── src/             # React frontend (components, pages, routes)
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── .gitignore
+├── package.json     # Vite + frontend dependencies
+├── vite.config.js
+├── .env         # Environment variables (not committed)
+└── README.md        # Project documentation
+```
+---
+
+## 🔐 Authentication
+
+- Secure JWT-based login and signup
+- Protected admin routes for tutorial creation
+
+---
+
+## 🧠 Tech Stack
+
+- *Frontend*: React, TailwindCSS, React Router, Framer Motion
+- *Backend*: Express.js, Node.js, MongoDB, JWT
+- *Deployment*: Vercel (Frontend) & Render (Backend)
+
+---
+
+## 🚀 Live Preview
+
+🔗 [Visit Arivra](https://arivra.vercel.app/)
+
+---
+
+## 🛠 Local Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/sauravkushwaha/arivra.git
+cd arivra
+
+# Navigate to frontend
+npm install
+npm run dev
+
+# Navigate to backend
+cd backend
+npm install
+npm start
+```
+
+---
+## 👤 Author
+
+- *Saurav Kushwaha*
+- 💼 [Linkedin](https://www.linkedin.com/in/sauravkushwaha/)
+- 🐱 [GitHub](https://github.com/sauravkushwaha)
