@@ -13,7 +13,7 @@ const Login = () => {
   if (token) {
     navigate('/');
   }
-}, []);
+}, [navigate]);
 
   const handleChange = (e) => {
     setFormData(prev => ({
