@@ -22,7 +22,7 @@ import SearchResults from './components/SearchResult.jsx';
 
   const router = createBrowserRouter([
     {
-      path:"/",
+      path:"/:username",
       element:<Layout/>
     },
     {
