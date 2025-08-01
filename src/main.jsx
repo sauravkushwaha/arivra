@@ -26,6 +26,10 @@ import SearchResults from './components/SearchResult.jsx';
       element:<Layout/>
     },
     {
+      path:"/",
+      element:<Layout/>
+    },
+    {
       path:"/courses",
       element:<Courses/>
     },
