@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 import { handleError } from '../utils';
@@ -8,6 +8,12 @@ import { loginUser } from '../utils/api';
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+  useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    navigate('/');
+  }
+}, []);
 
   const handleChange = (e) => {
     setFormData(prev => ({
