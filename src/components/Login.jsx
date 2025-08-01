@@ -35,7 +35,7 @@ const Login = () => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('loggedInUser', res.data.name);
       localStorage.setItem('loggedInemail', res.data.email);
-      setTimeout(() => navigate("/"), 1500);
+      setTimeout(() => navigate(/${userData.name}), 1500);
     } catch (err) {
       const errormsg = err.response?.data?.message || err.response?.data || 'Login failed';
       toast.error(errormsg);
