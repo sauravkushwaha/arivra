@@ -283,13 +283,13 @@ const handleSearch = (e) => {
                 >
                   {isDarkMode ? (
                     <>
-                      <Sun size={20} className="text-yellow-400" />
                       <span>Light Mode</span>
+                      <Sun size={20} className="text-yellow-400" />
                     </>
                   ) : (
                     <>
-                      <Moon size={20} className="text-blue-300" />
                       <span>Dark Mode</span>
+                      <Moon size={20} className="text-blue-300" />
                     </>
                   )}
                 </button>
