@@ -20,7 +20,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     //logout user
+    localStorage.removeItem("token");  
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("loggedInemail");
     setUsername(null);
     toast.success('logged out successfully');
     setTimeout(() => navigate("/"), 1000);
